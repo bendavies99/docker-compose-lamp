@@ -1,34 +1,42 @@
-# LAMP stack built with Docker Compose
+#TL;DR
 
-![Landing Page](https://preview.ibb.co/gOTa0y/LAMP_STACK.png)
-
-This is a basic LAMP stack environment built using Docker Compose. It consists following:
-
-* PHP 5.6
-* Apache 2.4
-* MySQL 5.7
-* phpMyAdmin
-
-## Installation
-
-Clone this repository on your local computer. Run the `docker-compose up -d`.
+make sure you have webim in the same directory as this repo or if not you can change it in .env file
 
 ```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
+git clone https://github.com/bendavies99/docker-compose-lamp.git
 cd docker-compose-lamp/
 git fetch --all
 git checkout 5.6.x
 docker-compose up -d
 ```
-> Please make sure that you are using `5.6.x` branch.
 
-Your LAMP stack is now ready!! You can access it via `http://localhost`.
+docker-compose up -d to start the containers
 
-## Configuration
+docker-composer stop to stop the containers
 
-This package comes with default configuration options. You can modify them by creating `.env` file in your root directory.
+docker-composer kill to kill the containers
 
-To make it easy, just copy the content from `sample.env` file and update the environment variable values as per your need.
+goto local
+
+make sure in libs/config.php you change the settings to
+
+mariadb for the host
+
+root for the username
+
+tiger for the password
+
+```php
+$mysqlhost = 'mariadb';
+$mysqldb = 'webim';
+$mysqllogin = 'root';
+$mysqlpass = 'password';
+$mysqlprefix = '';
+```
+
+then you will need to setup up the database goto localhost:8100 for PMA and then create a database called webim and then import the SQL file found at install/webim.sql and turn off enablessl and forcessl in chatconfig
+
+Happy developing!
 
 ### Configuration Variables
 
@@ -55,60 +63,3 @@ This will be used to store Apache logs. The default value for this is `./logs/ap
 _**MYSQL_LOG_DIR**_
 
 This will be used to store Apache logs. The default value for this is `./logs/mysql`.
-
-## Web Server
-
-Apache is configured to run on port 80. So, you can access it via `http://localhost`.
-
-#### Apache Modules
-
-By default following modules are enabled.
-
-* rewrite
-* headers
-
-> If you want to enable more modules, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge if seems good for general purpose.
-> You have to rebuild the docker image by running `docker-compose build` and restart the docker containers.
-
-#### Connect via SSH
-
-You can connect to web server using `docker exec` command to perform various operation on it. Use below command to login to container via ssh.
-
-```shell
-docker exec -it png-webserver /bin/bash
-```
-
-## PHP
-
-The installed version of PHP is 5.6.
-
-#### Extensions
-
-By default following extensions are installed.
-
-* mysqli
-* mbstring
-* zip
-* intl
-* mcrypt
-* curl
-* json
-* iconv
-* xml
-* xmlrpc
-* gd
-
-> If you want to install more extension, just update `./bin/webserver/Dockerfile`. You can also generate a PR and we will merge if seems good for general purpose.
-> You have to rebuild the docker image by running `docker-compose build` and restart the docker containers.
-
-## phpMyAdmin
-
-phpMyAdmin is configured to run on port 8080. Use following default credentials.
-
-http://localhost:8080/  
-username: root  
-password: tiger
-
-## Redis
-
-It comes with Redis. It runs on default port `6379`.
