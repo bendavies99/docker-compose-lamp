@@ -34,6 +34,8 @@ $mysqlprefix = '';
 
 then you will need to setup up the database goto localhost:8100 for PMA and then create a database called webim and then import the SQL file found at install/webim.sql and turn off enablessl and forcessl in chatconfig
 
+It is setup to work with webim.test/webim but you have to edit your systems hosts for that.
+
 ### finally goto localhost:80/webim
 
 ## Happy developing!
