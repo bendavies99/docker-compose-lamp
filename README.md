@@ -28,7 +28,7 @@ tiger for the password
 $mysqlhost = 'mariadb';
 $mysqldb = 'webim';
 $mysqllogin = 'root';
-$mysqlpass = 'password';
+$mysqlpass = 'tiger';
 $mysqlprefix = '';
 ```
 
