@@ -16,8 +16,6 @@ docker-composer stop to stop the containers
 
 docker-composer kill to kill the containers
 
-goto local
-
 make sure in libs/config.php you change the settings to
 
 mariadb for the host
@@ -36,7 +34,9 @@ $mysqlprefix = '';
 
 then you will need to setup up the database goto localhost:8100 for PMA and then create a database called webim and then import the SQL file found at install/webim.sql and turn off enablessl and forcessl in chatconfig
 
-Happy developing!
+### finally goto localhost:80/webim
+
+## Happy developing!
 
 ### Configuration Variables
 
