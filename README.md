@@ -1,4 +1,4 @@
-#TL;DR
+# WEBIM SETUP
 
 make sure you have webim in the same directory as this repo or if not you can change it in .env file
 
